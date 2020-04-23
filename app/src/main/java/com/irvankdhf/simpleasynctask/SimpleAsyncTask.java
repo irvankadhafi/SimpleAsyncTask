@@ -6,9 +6,15 @@ import android.widget.TextView;
 import java.lang.ref.WeakReference;
 import java.util.Random;
 
-public class MyAsyncTask extends AsyncTask<Void, Void, String> {
+public class SimpleAsyncTask extends AsyncTask<Void, Integer, String> {
 
     private WeakReference<TextView> mTextView;
+    private WeakReference<TextView> mResultTextView;
+
+    public SimpleAsyncTask(TextView tv, TextView result) {
+        mTextView = new WeakReference<>(tv);
+        mResultTextView = new WeakReference<>(result);
+    }
 
     @Override
     protected String doInBackground(Void... voids) {
@@ -16,6 +22,7 @@ public class MyAsyncTask extends AsyncTask<Void, Void, String> {
         int n = r.nextInt(11);
 
         int s = n * 200;
+        publishProgress(n);
 
         try {
             Thread.sleep(s);
@@ -23,7 +30,12 @@ public class MyAsyncTask extends AsyncTask<Void, Void, String> {
             e.printStackTrace();
         }
 
-        return "Awake at last after sleeping for " + s + " milliseconds!";
+        return "Awake at last after sleep " + s + " milliseconds!";
+    }
+
+    @Override
+    protected void onProgressUpdate(Integer... values) {
+        mResultTextView.get().setText("Current sleep time: " + values[0] + " ms");
     }
 
     @Override
@@ -31,7 +43,5 @@ public class MyAsyncTask extends AsyncTask<Void, Void, String> {
         mTextView.get().setText(result);
     }
 
-    public MyAsyncTask(TextView tv) {
-        mTextView = new WeakReference<>(tv);
-    }
+
 }
