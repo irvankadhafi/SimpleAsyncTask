@@ -15,7 +15,7 @@ public class MyAsyncTask extends AsyncTask<Void, Void, String> {
         Random r = new Random();
         int n = r.nextInt(11);
 
-        int s = n * 2000;
+        int s = n * 200;
 
         try {
             Thread.sleep(s);
