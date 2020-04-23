@@ -1,0 +1,7 @@
+#Thu Apr 23 13:02:10 WIB 2020
+base.0=/home/irvan/Documents/PPB/android-developer-fundamentals-course/Android fundamentals 07.1 - AsyncTask/SimpleAsyncTask/app/build/intermediates/dex/debug/mergeExtDexDebug/out/classes.dex
+path.1=classes.dex
+renamed.1=classes2.dex
+path.0=classes.dex
+renamed.0=classes.dex
+base.1=/home/irvan/Documents/PPB/android-developer-fundamentals-course/Android fundamentals 07.1 - AsyncTask/SimpleAsyncTask/app/build/intermediates/dex/debug/mergeProjectDexDebug/out/classes.dex
