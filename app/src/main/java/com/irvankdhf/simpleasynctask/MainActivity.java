@@ -4,25 +4,28 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     private TextView mTextView;
-    private TextView mProgressTextView;
     private static final String TEXT_STATE = "currentText";
-    private static final String TEXT_PROGRESS = "CurrentSleepDuration";
+//    private TextView mProgressTextView;
+//    private static final String TEXT_PROGRESS = "CurrentSleepDuration";
+    private ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mTextView = findViewById(R.id.textView1);
-        mProgressTextView = findViewById(R.id.textViewResult);
+//        mProgressTextView = findViewById(R.id.textViewResult);
+        mProgressBar = findViewById(R.id.progressBar);
 
         if(savedInstanceState != null) {
             mTextView.setText(savedInstanceState.getString(TEXT_STATE));
-            mProgressTextView.setText(savedInstanceState.getString(TEXT_PROGRESS));
+//            mProgressTextView.setText(savedInstanceState.getString(TEXT_PROGRESS));
         }
     }
 
@@ -30,11 +33,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putString(TEXT_STATE, mTextView.getText().toString());
-        outState.putString(TEXT_PROGRESS, mProgressTextView.getText().toString());
+//        outState.putString(TEXT_PROGRESS, mProgressTextView.getText().toString());
     }
 
     public void startTask(View view) {
         mTextView.setText(R.string.napping);
-        new SimpleAsyncTask(mTextView,mProgressTextView).execute();
+        new SimpleAsyncTask(mTextView,mProgressBar).execute();
     }
 }
